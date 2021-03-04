@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>test JS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+  </head>
+  <body>
+    <div id="container">
+      <h1 id="title">Rock, Paper or Scissors</h1>
+      <div id="display">
+          <div id="human-selection" ></div>
+          <div id="computer-selection" ></div>
+      </div>
+      <div id="display-text"><p id="text"></p></div>
+      <p id="help-text">Your score:</p><span id="totalScore"></span>
+      <div id="score"><p></p></div>
+      <div id="options">
+          <button onclick="playGround(this,'rock')" class="rock"></button>
+          <button onclick="playGround(this,'paper')" class="paper"></button>
+          <button onclick="playGround(this,'scissors')" class="scissors"></button>
+      </div>
+      <div id="myModal">
+        <div class="modal-content">
+            <h3 id="showResult"></h3>
+            <button id="Close">Restart</button>
+        </div>
+    </div>
+  </div>
+      
+    <script>
+      let humanScore = 0;
+      let computerScore = 0;
+      var modal = document.getElementById("myModal");
+      var closeBtn = document.getElementById("Close");
+
+      function playGround(obj,abc){
+        let humanSelection = obj.className;
+        let computerSelection =randomComputer();
+        console.log("human:"+humanSelection);
+        console.log("computer:"+computerSelection);
+
+        if (humanSelection == 'rock') {
+          document.getElementById("human-selection").style.background = "url('images/rock.png')";
+          document.getElementById("human-selection").style.backgroundSize ="cover";
+        } else if (humanSelection == 'paper') {
+          document.getElementById("human-selection").style.background = "url('images/paper.png')";
+          document.getElementById("human-selection").style.backgroundSize ="cover";
+        } else if (humanSelection == 'scissors') {
+          document.getElementById("human-selection").style.background = "url('images/scissor.png')";
+          document.getElementById("human-selection").style.backgroundSize ="cover";
+        } 
+
+        if (computerSelection == 'rock') {
+          document.getElementById("computer-selection").style.background = "url('images/rock.png')";
+          document.getElementById("computer-selection").style.backgroundSize ="cover";
+        } else if (computerSelection == 'paper') {
+          document.getElementById("computer-selection").style.background = "url('images/paper.png')";
+          document.getElementById("computer-selection").style.backgroundSize ="cover";
+        } else if (computerSelection == 'scissors') {
+          document.getElementById("computer-selection").style.background = "url('images/scissor.png')";
+          document.getElementById("computer-selection").style.backgroundSize ="cover";
+        } 
+
+        checkWin(humanSelection,computerSelection);
+        document.getElementById("totalScore").innerHTML = (humanScore + " VS " + computerScore);
+        if (humanScore === 5) {
+          resultWin();
+        } else if (computerScore === 5) {
+          resultLose();
+        }
+    
+        console.log(humanScore,computerScore);
+      }
+      function resultWin(){
+        modal.style.display = "block";
+        document.getElementById("showResult").innerHTML="You Won";         
+      }
+      function resultLose(){
+        modal.style.display = "block";
+        document.getElementById("showResult").innerHTML="You Losed";         
+      }
+      closeBtn.onclick = function(){
+        modal.style.display = "none";
+        location.reload();
+      }
+      function randomComputer(){
+      let options = ['rock', 'paper', 'scissors']
+      return (options[Math.floor(Math.random() *options.length)])
+      }
+
+      function checkWin(humanSelection,computerSelection){
+        if (humanSelection === computerSelection) {
+          document.getElementById("score").innerHTML = "tie";
+      } else {
+        switch (humanSelection) {
+          case "rock": {
+            if (computerSelection == "scissors") {
+              humanScore++;
+              document.getElementById("score").innerHTML = "You win";
+            } else if (computerSelection === "paper"){
+              computerScore++;
+              document.getElementById("score").innerHTML = "You lose";
+            }
+            break;
+          }
+          case "scissors": {
+            if (computerSelection === "paper") {
+              humanScore++;
+              document.getElementById("score").innerHTML = "You win";
+            } else if (computerSelection === "rock") {
+              computerScore++;
+              document.getElementById("score").innerHTML = "You lose";
+            }
+            break;
+          }
+          case "paper": {
+            if (computerSelection === "rock") {
+              humanScore++;
+              document.getElementById("score").innerHTML = "You win";
+            } else if (computerSelection === "scissors"){
+              computerScore++;
+              document.getElementById("score").innerHTML = "You lose";
+            }
+            break;
+          }
+        }
+      }
+     }
+      
+    </script>
+    </body>
+  </html>

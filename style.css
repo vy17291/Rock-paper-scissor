@@ -1,0 +1,151 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #fff;
+}
+
+#container {
+    width: 65%;
+    max-width: 1248px;
+    margin: auto;
+    text-align: center;
+    padding-top: 2rem;
+    background-color: #ffa600;
+    color:#fff;
+    border-radius: 10px;
+}
+
+#title {
+    margin-bottom: 10px;
+}
+
+#display {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#display-text {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#human-selection, #computer-selection {
+    width: 150px;
+    height: 150px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+#options {
+    display: flex;
+    justify-content: center;
+}
+
+#score {
+    margin: 0 auto;
+    height: 40px;
+    text-align: center;
+}
+
+#options > button:hover{
+    cursor: pointer;
+    transform: scale(1.1, 1.1);
+}
+
+.rock {
+    width: 150px;
+    height: 150px;
+    border: 2px solid  #fff;
+    border-radius: 10px;
+    margin: 10px;
+    background-image: url(./images/rock.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.paper {
+    width: 150px;
+    height: 150px;
+    border: 2px solid  #fff;
+    border-radius: 10px;
+    margin: 10px;
+    background-image: url(./images/paper.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.scissors {
+    width: 150px;
+    height: 150px;
+    border: 2px solid  #fff;
+    border-radius: 10px;
+    margin: 10px;
+    background-image: url(./images/scissor.png);
+    background-size: cover;
+    background-position: center;
+}
+
+
+#help-text {
+    margin: 5px;
+    margin-top: 40px;
+}
+
+#restart {
+    background: #ffa600;
+    padding: 2px;
+    border: 1px solid  #fff;
+    border-radius: 3px;
+    margin: 10px;
+    width: 100px;
+    height: 50px;
+}
+
+#restart:hover {
+    cursor: pointer;
+    background-color:  #fff;
+}
+
+.hidden {
+    display: none;
+}
+
+#results {
+    font-size: 56px;
+    padding: 20px;
+    padding-top: 50px;
+    margin: auto;
+    text-align: center;
+    font-weight: 700;
+}
+
+#button-container {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+#myModal{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 45%;
+    top: 45%;
+    width: 180px;
+    height: 40px;
+    background: #e49503;
+    color: #fff;
+    border: solid 1px #fff;
+    border-radius: 5px;
+    padding: 10px;
+}
+  
+@media (max-width: 700px){
+   #container{
+    width: 100%;
+   } 
+}
